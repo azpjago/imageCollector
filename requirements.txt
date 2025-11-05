@@ -21,6 +21,7 @@ executing==2.2.1
 fastjsonschema==2.21.2
 fonttools==4.60.1
 fqdn==1.5.1
+google_search_results==2.4.2
 h11==0.16.0
 httpcore==1.0.9
 httpx==0.28.1
@@ -87,6 +88,7 @@ rfc3986-validator==0.1.1
 rfc3987-syntax==1.1.0
 rpds-py==0.28.0
 Send2Trash==1.8.3
+serpapi==0.1.5
 setuptools==80.9.0
 simplejson==3.20.2
 six==1.17.0
