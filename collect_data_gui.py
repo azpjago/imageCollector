@@ -1,4 +1,4 @@
-# Import the libray
+# Import library
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 import threading
@@ -7,7 +7,7 @@ import requests
 from serpapi import GoogleSearch
 from time import sleep
 from PIL import Image, ImageStat
-from io import BytesIo
+from io import BytesIO
 import urllib3
 import warnings
 import colorsys
