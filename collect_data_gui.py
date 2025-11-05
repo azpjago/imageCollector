@@ -14,7 +14,7 @@ import colorsys
 from datetime import datetime
 
 # Disable warnings
-urllib3.disable_warnings(urllib3.exceptions.InsercureRequestWarning)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 warnings.filterwarnings("ignore")
 
 class ImageDownloaderApp:
