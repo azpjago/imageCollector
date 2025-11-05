@@ -29,3 +29,23 @@ class ImageDownloaderApp:
 		self.download_thread = None
 		
 		self.setup_gui()
+	def setup_gui(self):
+		# create main frame with scrollbar
+		main_frame = ttk.Frame(self.root)
+		main_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
+
+		# create canvas and scrollbar
+		canvas = tk.Canvas(main_frame)
+		scrollbar = ttk.Scrollbar(main_frame, orient="vertical", command=canvas.yview)
+		scrollable_frame = ttk.Frame(canvas)
+
+		scrollable_frame.bind(
+			"<Configure>",
+			lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+		)
+
+		canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+		canvas.configure(yscrollcommand=scrollbar.set)
+
+		canvas.pack(side="left", fill="both", expand=True)
+		scrollbar.pack(side="right", fill="y")
