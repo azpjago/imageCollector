@@ -49,3 +49,11 @@ class ImageDownloaderApp:
 
 		canvas.pack(side="left", fill="both", expand=True)
 		scrollbar.pack(side="right", fill="y")
+		
+		# Title - lebih kecil
+		title_label = ttk.Label(scrollable_frame, text="AI Training Data Downloader",
+		font=('Arial', 24, 'bold')
+		title_label.grid(row=0, column=0, columnspan=2, pady=(0,10))
+		
+		
+		
