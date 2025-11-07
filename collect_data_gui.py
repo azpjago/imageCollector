@@ -59,5 +59,10 @@ class ImageDownloaderApp:
 		config_frame = ttk.LabelFrame(scrollable_frame, text="Configuration", padding=10)
 		config_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), paddy=(0,10))
 		
-		 
+		# API KEY Location
+		ttk.Label(config_frame, text="Input SerpAPI Key").grid(row=0, column=0, sticky=tk.W, pady=3)
+		self.api_key = tk.StringVar()
+		api_entry = ttk.Entry(config_frame, textvariable=self.api_key, width=40, font=('Arial',9))
+		ttk.Button(config_frame, text="Dapatkan Kunci API", command=self.open_serpapi_website, width=8).grid(row=0, column=2, padx=(5,0))
+		
 		
