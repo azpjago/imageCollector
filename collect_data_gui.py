@@ -77,8 +77,9 @@ class ImageDownloaderApp:
 		
 		# Output Directory
 		ttk.Label(config_frame, text="Output Folder:").grid(row=1, column=0, sticky=tk.W,pady=3)
-		self.output_dir=(config_frame, textvariab=self.output_dir, width=30, font=('Arial',9)).grid(row=1, column=1, pady=3, padx=(5,0), sticky=(tk.W, tk.E))
-		ttk.Button(config_frame, text="Browse", command=self.browse_folder, width=8).grid(row=1, column=2, padx=(5,0)
+		self.output_dir= tk.StringVar(value="training_data")
+		ttk.Entry(config_frame, textvariable=self.output_dir, width=30, font=('Arial', 9)).grid(row=1, column=1, pady=3, padx=(5,0), sticky=(tk.W, tk.E))
+		ttk.Button(config_frame, text="Browse", command=self.browse_folder, width=8).grid(row=1, column=2, padx=(5,0))
 		
 		config_frame.columnconfigure(1, weight=1)
 
