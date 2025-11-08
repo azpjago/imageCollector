@@ -286,3 +286,10 @@ class ImageDownloaderApp:
 			if var.get():
 				categories.append(cat)
 		
+		# Add custom categories
+		custom_cats = [cat.strip() for cat in self.custom_categories.get().split(',') if cat.strip()]
+		categories.extend(custom_cats)
+		
+		if not categories:
+			messagebox.showerror("Error", "Please select at least one category!")
+			return
