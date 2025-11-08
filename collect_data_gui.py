@@ -386,10 +386,30 @@ class ImageDownloaderApp:
 			self.start_button.config(state='normal')
 			self.stop_button.config(state='disabled')
 				
+	def download_category_images(self, obj_type, category, target_count):
+		"""Donwload images for a category"""
+		folder = os.path.join(self, output_dir_get(), obj_type, category)
+		os.makedirs(folder, exist_ok=True)
+		
+		downloaded_count = 0
+		queries = self.generate_queries(obj_type, category)
+		
+		for query in queries:
+			if not self.is_downloading or downloaded_count >= target_count:
+				break
 				
+			try:
+				params = {
+				"q": query,
+				"engine": "google_images",
+				"api_key": self.api_key.get(),
+				"num": 100,
+				"safe": "active" if self.safe_search.get() else "off",
+				"tbs": f"itp:{self.image_type.get()},isz:l"
+				}
 				
-				
-				
+				search = GoogleSearch(params)
+				results = search.get_dict()
 				
 				
 				
