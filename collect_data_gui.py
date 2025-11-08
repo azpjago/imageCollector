@@ -438,6 +438,10 @@ class ImageDownloaderApp:
 								if self.use_color_filter.get() and not self.color_filter(img_pil, obj_type, category):
 									continue
 								
+								# Save images
+								filename = f"{obj_type}_{category}_{downloaded_count:04d}.jpg"
+								file_path = os.path.join(folder, filename)
+								img_pil.save(file_path, "JPEG", quality=85)								
 				
 				
 				
