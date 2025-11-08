@@ -306,3 +306,9 @@ class ImageDownloaderApp:
         
 		if not confirm:
 			return
+			
+		# Setup download
+		self.is_downloading = True
+		self.start_button.config(state='disabled')
+		self.stop_button.config(state='normal')
+		
