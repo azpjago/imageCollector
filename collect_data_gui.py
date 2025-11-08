@@ -433,6 +433,10 @@ class ImageDownloaderApp:
 								min_size = int(self.min_size.get().split('x')[0])
 								if img_pil.size[0] < min_size or img_pil.size[1] < min_size:
 									continue
+									
+								# Color filter
+								if self.use_color_filter.get() and not self.color_filter(img_pil, obj_type, category):
+									continue
 								
 				
 				
