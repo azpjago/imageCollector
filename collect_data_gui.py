@@ -276,4 +276,6 @@ class ImageDownloaderApp:
 		if not self.api_key.get():
 			messagebox.showerror("Error", "Please enter your SerpAPI key!\nGet free key from: https://serpapi.com")
 			return
-		
+		if not self.output_dir.get():
+			messagebox.showerror("Error", "Please select output directory!")
+			return
