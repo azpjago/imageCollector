@@ -94,3 +94,8 @@ class ImageDownloaderApp:
 		values=["banana", "mango", "tomato", "apple", "orange", "custom"], state="readonly", width=12, font=('Arial',9))
 		object_combo.grid(row=0, column=1, pady=3, padx=(5,0), sticky=tk.W)
 		object_combo.bind('<<ComboboxSelected>>', self.on_object_change)
+
+		# Custom object type
+		ttk.Label(search_frame, text="Custom:").grid(row=0, column=2, sticky=tk.W, pady=3, padx=(10,0))
+		self.custom_object = tk.StringVar()
+		ttk.Entry(search_frame, textvariable=self.custom_object, width=15, font=('Arial', 9)).grid(row=3, column=3, pady=3, padx=(5,0))
