@@ -186,6 +186,20 @@ class ImageDownloaderApp:
 		command=self.open_output_folder,
 		width=10).grid(row=0, column=3, padx=5)
 		
+		# == PROGRESS SECTION == 
+		progress_frame = ttk.LabelFrame(scrollable_frame, text="📊 Progress", padding="10")
+		progress_frame.grid(row=5, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0, 10))
+		
+		
+		# progress bar compact
+		ttk.Label(progress_frame, text="Overall:").grid(row=0, column=0, sticky=tk.W, pady=2)
+		self.overall_progress = ttk.Progressbar(progress_frame, mode='determinate')
+		self.overall_progress.grid(row=0, column=1, columnspan=3, sticky=(tk.W, tk.E), pady=2)
+		
+		ttk.Label(progress_frame, text="Current:").grid(row=1, column=0, sticky=tk.W, pady=2)
+		self.current_progress = ttk.Progressbar(progress_frame, mode='determinate')
+		self.current_progress.grid(row=1, column=1, columnspan=3, sticky=(tk.W, tk.E), pady=2)
+		
 		
 		
 		
