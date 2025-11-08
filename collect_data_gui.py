@@ -81,3 +81,7 @@ class ImageDownloaderApp:
 		ttk.Button(config_frame, text="Browse", command=self.browse_folder, width=8).grid(row=1, column=2, padx=(5,0)
 		
 		config_frame.columnconfigure(1, weight=1)
+
+		# == SEARCH PARAMETER SECTION ==
+		search_frame = ttk.LabelFrame(scrollable_frame, text="Search Parameters", padding="10")
+		search_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0,10))
