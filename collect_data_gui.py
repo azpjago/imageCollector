@@ -102,8 +102,8 @@ class ImageDownloaderApp:
 
 		# Categories/Stages
 		ttk.Label(search_frame, text="Categories:").grid(row=1, column=0, sticky=tk.W, pady=3)
-        self.categories_frame = ttk.Frame(search_frame)
-        self.categories_frame.grid(row=1, column=1, columnspan=3, sticky=(tk.W, tk.E), pady=3, padx=(5, 0))
+		self.categories_frame = ttk.Frame(search_frame)
+		self.categories_frame.grid(row=1, column=1, columnspan=3, sticky=(tk.W, tk.E), pady=3, padx=(5, 0))
         
         self.category_vars = {}
         default_categories = ["unripe", "ripe", "overripe", "fresh", "rotten"]
@@ -111,3 +111,9 @@ class ImageDownloaderApp:
             var = tk.BooleanVar(value=(cat in ["unripe", "ripe", "overripe"]))
             self.category_vars[cat] = var
             ttk.Checkbutton(self.categories_frame, text=cat, variable=var).grid(row=0, column=i, padx=(0, 8))
+
+		# Custom categories/stages
+		ttk.Label(search_frame, text="Custom Cats:").grid(row=2, column=0, sticky=tk.W, pady=3)
+        self.custom_categories = tk.StringVar()
+        ttk.Entry(search_frame, textvariable=self.custom_categories, width=25, font=('Arial', 9)).grid(row=2, column=1, columnspan=2, pady=3, padx=(5, 0), sticky=(tk.W, tk.E))
+        ttk.Label(search_frame, text="(use commas)").grid(row=2, column=3, sticky=tk.W, pady=3, padx=(5, 0))
