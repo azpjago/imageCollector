@@ -119,7 +119,7 @@ class ImageDownloaderApp:
 		ttk.Label(search_frame, text="(use commas)").grid(row=2, column=3, sticky=tk.W, pady=3, padx=(5, 0))
 
 		# Image per category
-        ttk.Label(search_frame, text="Images/Cat:").grid(row=3, column=0, sticky=tk.W, pady=3)
-        self.images_per_category = tk.IntVar(value=50)
-        ttk.Spinbox(search_frame, from_=10, to=500, textvariable=self.images_per_category, width=8).grid(row=3, column=1, pady=3, padx=(5, 0))
-        search_frame.columnconfigure(1, weight=1)
+		ttk.Label(search_frame, text="Images/Cat:").grid(row=3, column=0, sticky=tk.W, pady=3)
+		self.images_per_category = tk.IntVar(value=50)
+		ttk.Spinbox(search_frame, from_=10, to=500, textvariable=self.images_per_category, width=8).grid(row=3, column=1, pady=3, padx=(5, 0))
+		search_frame.columnconfigure(1, weight=1)
