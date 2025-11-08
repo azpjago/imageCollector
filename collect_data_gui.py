@@ -429,6 +429,10 @@ class ImageDownloaderApp:
 								if img_pil.mode != 'RGB':
 									img_pil = img_pil.convert('RGB')
 									
+								# Size filter
+								min_size = int(self.min_size.get().split('x')[0])
+								if img_pil.size[0] < min_size or img_pil.size[1] < min_size:
+									continue
 								
 				
 				
