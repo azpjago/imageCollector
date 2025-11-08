@@ -141,6 +141,22 @@ class ImageDownloaderApp:
 		self.safe_search = tk.BooleanVar(value=True)
 		ttk.Checkbutton(filter_frame, text="Safe Search", variable=self.safe_search).grid(row=0, column=3, pady=2, padx=(10, 0))
 		
+		# Line 2, type and delay
+		ttk.Label(filter_frame, text="Image Type:").grid(row=1, column=0, sticky=tk.W, pady=2)
+		self.image_type = tk.StringVar(value="photo")
+		type_combo = ttk.Combobox(filter_frame, textvariable=self.image_type,
+                                 values=["photo", "clipart", "lineart", "face"],
+                                 state="readonly", width=8)
+		type_combo.grid(row=1, column=1, pady=2, padx=(5, 0))
+		
+		ttk.Label(filter_frame, text="Delay:").grid(row=1, column=2, sticky=tk.W, pady=2, padx=(10, 0))
+		self.download_delay = tk.DoubleVar(value=0.5)
+		ttk.Spinbox(filter_frame, from_=0.1, to=5.0, increment=0.1, 
+                   textvariable=self.download_delay, width=6).grid(row=1, column=3, pady=2, padx=(5, 0))
+                   
+		
+		
+		
 		
 		
 		
