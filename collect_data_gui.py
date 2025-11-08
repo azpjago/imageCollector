@@ -127,3 +127,22 @@ class ImageDownloaderApp:
 		# FILTER SECTION
 		filter_frame = ttk.LabelFrame(scrollable_frame, text="⚙️ Filter Options", padding="10")
 		filter_frame.grid(row=3, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0, 10))
+
+		# Line 3, size and filter
+		ttk.Label(filter_frame, text="Min Size:").grid(row=0, column=0, sticky=tk.W, pady=2)
+		self.min_size = tk.StringVar(value="400x400")
+		size_combo = ttk.Combobox(filter_frame, textvariable=self.min_size,
+                                 values=["200x200", "400x400", "600x600", "800x800"],
+                                 state="readonly", width=8)
+		size_combo.grid(row=0, column=1, pady=2, padx=(5, 0))
+		
+		self.use_color_filter = tk.BooleanVar(value=True)
+		ttk.Checkbutton(filter_frame, text="Color Filter", variable=self.use_color_filter).grid(row=0, column=2, pady=2, padx=(10, 0))
+		self.safe_search = tk.BooleanVar(value=True)
+		ttk.Checkbutton(filter_frame, text="Safe Search", variable=self.safe_search).grid(row=0, column=3, pady=2, padx=(10, 0))
+		
+		
+		
+		
+		
+		
