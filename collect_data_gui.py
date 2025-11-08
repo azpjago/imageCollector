@@ -123,3 +123,7 @@ class ImageDownloaderApp:
 		self.images_per_category = tk.IntVar(value=50)
 		ttk.Spinbox(search_frame, from_=10, to=500, textvariable=self.images_per_category, width=8).grid(row=3, column=1, pady=3, padx=(5, 0))
 		search_frame.columnconfigure(1, weight=1)
+
+		# FILTER SECTION
+		filter_frame = ttk.LabelFrame(scrollable_frame, text="⚙️ Filter Options", padding="10")
+		filter_frame.grid(row=3, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0, 10))
