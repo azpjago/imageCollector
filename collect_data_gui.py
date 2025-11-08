@@ -316,6 +316,10 @@ class ImageDownloaderApp:
 		self.overall_progress['value'] = 0
 		self.current_progress['value'] = 0
 		
+		# Start download thread
+		self.download_thread = threading.Thread(target=self.download_images_thread, args=(obj_type, categories, self.images_per_category.get()))
+		self.download_thread.daemon = True
+		self.download_thread.start()
 		
 		
 		
