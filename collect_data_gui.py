@@ -312,3 +312,11 @@ class ImageDownloaderApp:
 		self.start_button.config(state='disabled')
 		self.stop_button.config(state='normal')
 		
+		# Reset progress
+		self.overall_progress['value'] = 0
+		self.current_progress['value'] = 0
+		
+		
+		
+		
+		
