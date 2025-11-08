@@ -298,3 +298,11 @@ class ImageDownloaderApp:
 		if not obj_type:
 			messagebox.showerror("Error", "Please specify object type!")
 			return
+			
+		# Confirmation
+		total_images = len(categories) * self.images_per_category.get()
+		confirm = messagebox.askyesno("Confirm Download", f"Start downloading?\n\nObject: {obj_type}\nCategories: {', '.join(categories)}\nImages: {self.images_per_category.get()} per category\nTotal: {total_images} images"
+        )
+        
+		if not confirm:
+			return
