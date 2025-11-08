@@ -225,3 +225,55 @@ class ImageDownloaderApp:
 		progress_frame.columnconfigure(1, weight=1)
 		log_frame.columnconfigure(0, weight=1)
 		log_frame.rowconfigure(0, weight=1)
+		
+		# Initialize
+		self.log("🌟 AI Training Data Downloader Ready!")
+		self.log("➡️ Configure parameters and click START DOWNLOAD")
+		self.log("➡️ Get API key from: https://serpapi.com")
+		
+		def on_object_change(self, event):
+			if self.object_type.get() == "custom":
+				self.custom_object.set("")
+				self.custom_object.focus()
+			else:
+				self.custom_object.set("")
+    
+	def open_serpapi_website(self):
+		import webbrowser
+		webbrowser.open("https://serpapi.com")
+		self.log("🌐 Opening SerpAPI website...")
+		
+	def browse_folder(self):
+		folder = filedialog.askdirectory()
+		if folder:
+			self.output_dir.set(folder)
+			self.log(f"📁 Output folder: {folder}")
+    
+	def log(self, message):
+		timestamp = datetime.now().strftime("%H:%M:%S")
+		log_entry = f"[{timestamp}] {message}\n"
+		self.log_text.insert(tk.END, log_entry)
+		self.log_text.see(tk.END)
+		self.root.update_idletasks()
+    
+	def clear_log(self):
+		self.log_text.delete(1.0, tk.END)
+		self.log("Log cleared - Ready for new download")
+    
+	def open_output_folder(self):
+		output_path = self.output_dir.get()
+		if os.path.exists(output_path):
+			try:
+				os.startfile(output_path)
+				self.log(f"📂 Opened: {output_path}")
+			except:
+				self.log("❌ Could not open folder")
+		else:
+			messagebox.showwarning("Warning", "Output folder doesn't exist yet!")
+		
+	def start_download(self):
+		# Validasi input
+		if not self.api_key.get():
+			messagebox.showerror("Error", "Please enter your SerpAPI key!\nGet free key from: https://serpapi.com")
+			return
+		
