@@ -209,3 +209,15 @@ class ImageDownloaderApp:
 		
 		self.stats_label = ttk.Label(progress_frame, text="", font=('Arial', 8, 'bold'))
 		self.stats_label.grid(row=4, column=0, columnspan=4, sticky=tk.W, pady=1)
+		
+		# log area smaller
+		ttk.Label(progress_frame, text="Log:", font=('Arial', 9, 'bold')).grid(row=5, column=0, sticky=tk.W, pady=(8, 2))
+		log_frame = ttk.Frame(progress_frame)
+		log_frame.grid(row=6, column=0, columnspan=4, sticky=(tk.W, tk.E, tk.N, tk.S), pady=2)
+		self.log_text = tk.Text(log_frame, height=6, width=70, font=('Consolas', 8))
+		self.log_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+		log_scrollbar = ttk.Scrollbar(log_frame, orient="vertical", command=self.log_text.yview)
+		log_scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
+		self.log_text.configure(yscrollcommand=log_scrollbar.set)
+        
+        
