@@ -200,6 +200,12 @@ class ImageDownloaderApp:
 		self.current_progress = ttk.Progressbar(progress_frame, mode='determinate')
 		self.current_progress.grid(row=1, column=1, columnspan=3, sticky=(tk.W, tk.E), pady=2)
 		
+		# status label compact
+		self.overall_status = ttk.Label(progress_frame, text="Ready to start...", font=('Arial', 9))
+		self.overall_status.grid(row=2, column=0, columnspan=4, sticky=tk.W, pady=3)
+        
+		self.current_status = ttk.Label(progress_frame, text="", font=('Arial', 8))
+		self.current_status.grid(row=3, column=0, columnspan=4, sticky=tk.W, pady=1)
 		
-		
-		
+		self.stats_label = ttk.Label(progress_frame, text="", font=('Arial', 8, 'bold'))
+		self.stats_label.grid(row=4, column=0, columnspan=4, sticky=tk.W, pady=1)
