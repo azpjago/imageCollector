@@ -55,30 +55,9 @@ class ImageDownloaderApp:
 		font=('Arial', 24, 'bold'))
 		title_label.grid(row=0, column=0, columnspan=2, pady=(0,10))
 		
-		# == CONFIGURATION SECTION ==
-		config_frame = ttk.LabelFrame(scrollable_frame, text="Configuration", padding="10")
-		config_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0,10))
-		
-		# API KEY - serpAPI key
-		ttk.Label(config_frame, text="serpAPI Key:").grid(row=0, column=0, sticky=tk.W, pady=3)
-		self.api_key = tk.StringVar()
-		api_entry = ttk.Entry(config_frame, textvariable=self.api_key, width=40, font=('Arial', 9))
-		api_entry.grid(row=0, column=1, pady=3, padx=(5,0), sticky=(tk.W, tk.E))
-		ttk.Button(config_frame, text="Get Key", command=self.open_serpapi_website, width=8).grid(row=0, column=2, padx=(5,0))
-		
-		# Output Directory
-		ttk.Label(config_frame, text="Output Folder:").grid(row=1, column=0, sticky=tk.W, pady=3)
-		self.output_dir=tk.StringVar(value="training_data")
-		ttk.Entry(config_frame, textvariable=self.output_dir, width=30, font=('Arial', 9)).grid(row=1, column=2, pady=3, padx=(5,0),
-		sticky=(tk.W, tk.E))
-		ttk.Button(config_frame, text="Browse", command=self.browse_folder,
-		width=8).grid(row=1, column=2, padx=(5,0))
-		
-		config_frame.columnconfigure(1, weight=1)
-		
 		# == Configuration Section == 
 		config_frame = ttk.LabelFrame(scrollable_frame, text="Configuration", padding=10)
-		config_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), paddy=(0,10))
+		config_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0,10))
 		
 		# API KEY Location
 		ttk.Label(config_frame, text="Input SerpAPI Key").grid(row=0, column=0, sticky=tk.W, pady=3)
@@ -181,7 +160,7 @@ class ImageDownloaderApp:
 		button_frame,
 		text="STOP",
 		command=self.stop_download,
-		status='disabled',
+		state='disabled',
 		width=10)
 		self.stop_button.grid(row=0, column=1, padx=5)
 		# CLEAR LOG BUTTON
@@ -242,12 +221,12 @@ class ImageDownloaderApp:
 		self.log("➡️ Configure parameters and click START DOWNLOAD")
 		self.log("➡️ Get API key from: https://serpapi.com")
 		
-		def on_object_change(self, event):
-			if self.object_type.get() == "custom":
-				self.custom_object.set("")
-				self.custom_object.focus()
-			else:
-				self.custom_object.set("")
+	def on_object_change(self, event):
+		if self.object_type.get() == "custom":
+			self.custom_object.set("")
+			self.custom_object.focus()
+		else:
+			self.custom_object.set("")
     
 	def open_serpapi_website(self):
 		import webbrowser
@@ -512,10 +491,3 @@ if __name__ == "__main__":
 	root = tk.Tk()
 	app = ImageDownloaderApp(root)
 	root.mainloop()
-				
-				
-				
-				
-				
-				
-				
