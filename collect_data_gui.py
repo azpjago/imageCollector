@@ -458,8 +458,24 @@ class ImageDownloaderApp:
 			sleep(0.5)
 			
 		return downloaded_count
-				
-				
+	
+	def generate_queries(self, obj_type, category):
+		"""Generate search queries"""
+		base_queries = [
+		f"{category} {obj_type}",
+		f"{obj_type} {category}",
+		f"{category} {obj_type} photo",
+		f"{obj_type} {category} high quality"]
+		
+		
+		category_queries = {
+			"unripe" : [f"green {obj_type} unripe", f"raw {obj_type}"],
+			"ripe" : [f"fresh ripe {obj_type}", f"perfect {obj_type}"],
+			"overripe" : [f"rotten {obj_type}", f"spoiled {obj_type}"]
+			}
+			
+			additional = category_queries.get(category, [])
+			return base_queries + additional
 				
 				
 				
