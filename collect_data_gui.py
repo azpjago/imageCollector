@@ -158,8 +158,33 @@ class ImageDownloaderApp:
 		button_frame = ttk.Frame(scrollable_frame)
 		button_frame.grid(row=4, column=0, columnspan=2, pady=10)
 		
-		
-		
+		# START BUTTON
+		self.start_button = ttk.Button(
+		button_frame,
+		text="Start Download",
+		command=self.start_download,
+		width=20)
+		self.start_button.grid(row=0, column=0, padx=5)
+		# STOP BUTTON
+		self.stop_button = ttk.Button(
+		button_frame,
+		text="STOP",
+		command=self.stop_download,
+		status='disabled',
+		width=10)
+		self.stop_button.grid(row=0, column=1, padx=5)
+		# CLEAR LOG BUTTON
+		ttk.Button(
+		button_frame,
+		text="Clear Log",
+		command=self.clear_log,
+		width=10).grid(row=0, column=2, padx=5)
+		# OPEN FOLDER BUTTON
+		ttk.Button(
+		button_frame,
+		text="Open Folder",
+		command=self.open_output_folder,
+		width=10).grid(row=0, column=3, padx=5)
 		
 		
 		
