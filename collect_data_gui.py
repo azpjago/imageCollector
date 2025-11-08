@@ -279,3 +279,10 @@ class ImageDownloaderApp:
 		if not self.output_dir.get():
 			messagebox.showerror("Error", "Please select output directory!")
 			return
+
+		# Get selected categories
+		categories = []
+		for cat, var in self.category_vars.items():
+			if var.get():
+				categories.append(cat)
+		
