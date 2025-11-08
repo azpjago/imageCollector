@@ -321,6 +321,23 @@ class ImageDownloaderApp:
 		self.download_thread.daemon = True
 		self.download_thread.start()
 		
+	def stop_download(self):
+		self.is_downloading = False
+		self.log("🛑 Stopping download...")
+		self.start_button.config(state='normal')
+		self.stop_button.config(state='disabled')
 		
-		
-		
+	def download_images_thread(self, obj_type, categories, images_per_category):
+		try:
+			total_categories = len(categories)
+			total_target = total_categories * images_per_category
+			total_downloaded = 0
+            
+			self.log(f"🎯 STARTING DOWNLOAD")
+			self.log(f"📦 Object: {obj_type}")
+			self.log(f"🏷️ Categories: {', '.join(categories)}")
+			self.log(f"📊 Target: {total_target} images")
+            
+            # Setup progress
+			self.overall_progress['maximum'] = total_target
+			self.current_progress['maximum'] = images_per_category
