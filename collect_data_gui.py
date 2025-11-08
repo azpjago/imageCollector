@@ -497,6 +497,10 @@ class ImageDownloaderApp:
 		except:
 			return False
 				
+if __name__ == "__main__":
+	root = tk.Tk()
+	app = ImageDownloaderApp(root)
+	root.mainloop()
 				
 				
 				
