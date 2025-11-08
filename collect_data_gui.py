@@ -55,6 +55,11 @@ class ImageDownloaderApp:
 		font=('Arial', 24, 'bold'))
 		title_label.grid(row=0, column=0, columnspan=2, pady=(0,10))
 		
+		# == CONFIGURATION SECTION ==
+		config_frame = ttk.LabelFrame(scrollable_frame, text="Configuration", padding="10")
+		config_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0,10))
+		
+		
 		# Output Directory
 		ttk.Label(config_frame, text="Output Folder:").grid(row=1, column=0, sticky=tk.W, pady=3)
 		self.output_dir=tk.StringVar(value="training_data")
