@@ -220,4 +220,8 @@ class ImageDownloaderApp:
 		log_scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
 		self.log_text.configure(yscrollcommand=log_scrollbar.set)
         
-        
+        # Configure grid weights for more responsive layout
+		scrollable_frame.columnconfigure(0, weight=1)
+		progress_frame.columnconfigure(1, weight=1)
+		log_frame.columnconfigure(0, weight=1)
+		log_frame.rowconfigure(0, weight=1)
