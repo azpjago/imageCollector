@@ -474,9 +474,28 @@ class ImageDownloaderApp:
 			"overripe" : [f"rotten {obj_type}", f"spoiled {obj_type}"]
 			}
 			
-			additional = category_queries.get(category, [])
-			return base_queries + additional
+		additional = category_queries.get(category, [])
+		return base_queries + additional
+	def color_filter(self, image, obj_type, category):
+		"""Simple color filter"""
+		try:
+			if image.mode != 'RGB':
+				image = image.convert('RGB')
+			
+			image_small = image.resize((50,50))
+			stat = ImageStat.Stat(image_small)
+			r, g, b = stat.mean
+			
+			if "unripe" in category:
+				return g > r and g > b
+			elif "ripe" in category:
+				return r > 80 or g > 80
+			elif "overripe" in category:
+				return (r + b + b) / 3 < 180
 				
+			return True
+		except:
+			return False
 				
 				
 				
