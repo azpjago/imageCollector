@@ -448,10 +448,16 @@ class ImageDownloaderApp:
 									self.current_progress['value'] = downloaded_count
 									self.stats_label.config(text=f"Downloaded: {downloaded_count}/{target_count}")
 									
-						except:
-							continue
+					except:
+						continue
 													
-				
+					sleep(self.downloaded_delay.get())
+					
+			except Exception as e:
+				continue
+			sleep(0.5)
+			
+		return downloaded_count
 				
 				
 				
