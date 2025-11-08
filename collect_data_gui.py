@@ -341,3 +341,65 @@ class ImageDownloaderApp:
             # Setup progress
 			self.overall_progress['maximum'] = total_target
 			self.current_progress['maximum'] = images_per_category
+			
+			for i, category in enumerate(categories):
+				if not self.is_downloading:
+					break
+				self.current_status.config(text=f"Downloading: {category}")
+				self.current_progress['value'] = 0
+				self.log(f"📁 {obj_type} - {category}")
+				
+				# Download category
+				downloaded = self.download_category_images(obj_type, category, images_per_category)
+				total_downloaded += downloaded
+				
+				# Update progress
+				self.overall_progress['value'] = (i + 1) * images_per_category
+				progress_percent = ((i + 1) / total_categories) * 100
+				self.overall_status.config(text=f"Progress: {i+1}/{total_categories} categories ({progress_percent:.1f}%)")
+				
+				self.log(f"✅ {category}: {downloaded}/{images_per_category} images")
+				
+				# Jeda antar kategori
+				if self.is_downloading and i < len(categories) - 1:
+					sleep(1)
+			
+			# Final report
+			if self.is_downloading:
+				success_rate = (total_downloaded / total_target) * 100
+				self.log(f"🎉 COMPLETED: {total_downloaded}/{total_target} images ({success_rate:.1f}%)")
+				self.current_status.config(text=f"Completed! {total_downloaded} images")
+				self.stats_label.config(text=f"SUCCESS: {total_downloaded} images", foreground="green")
+				messagebox.showinfo("Completed", f"Download finished!\n{total_downloaded}/{total_target} images")
+				
+			else:
+				self.log(f"⏹️ STOPPED: {total_downloaded} images")
+				self.stats_label.config(text=f"STOPPED: {total_downloaded} images", foreground="orange")
+				
+		except Exception as e:
+			error_msg = f"❌ ERROR: {str(e)}"
+			self.log(error_msg)
+			self.stats_label.config(text=error_msg, foreground="red")
+			messagebox.showerror("Error", f"Download failed:\n{str(e)}")
+		finally:
+			self.is_downloading = False
+			self.start_button.config(state='normal')
+			self.stop_button.config(state='disabled')
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
