@@ -154,7 +154,9 @@ class ImageDownloaderApp:
 		ttk.Spinbox(filter_frame, from_=0.1, to=5.0, increment=0.1, 
                    textvariable=self.download_delay, width=6).grid(row=1, column=3, pady=2, padx=(5, 0))
                    
-		
+		# == BUTTON CONTROL ==
+		button_frame = ttk.Frame(scrollable_frame)
+		button_frame.grid(row=4, column=0, columnspan=2, pady=10)
 		
 		
 		
