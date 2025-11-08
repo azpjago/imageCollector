@@ -293,3 +293,8 @@ class ImageDownloaderApp:
 		if not categories:
 			messagebox.showerror("Error", "Please select at least one category!")
 			return
+		# Get object type
+		obj_type = self.custom_object.get() if self.object_type.get() == "custom" else self.object_type.get()
+		if not obj_type:
+			messagebox.showerror("Error", "Please specify object type!")
+			return
