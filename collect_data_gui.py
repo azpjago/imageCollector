@@ -410,7 +410,26 @@ class ImageDownloaderApp:
 				
 				search = GoogleSearch(params)
 				results = search.get_dict()
+				images = results.get("images_results",[])
 				
+				for img in images:
+					if not self.is_downloading or downloaded_count >= target_count:
+						break
+					
+					url = img.get("original") or img.get("thumbnail")
+					if not url:
+						continue
+						
+					try:
+						response = requests.get(url, timeout=15, verify=False)
+						if response.status_code == 200:
+							img_data = BytesIO(response.content)
+							
+							with Image.open(img_data) as img_pil:
+								if img_pil.mode != 'RGB':
+									img_pil = img_pil.convert('RGB')
+									
+								
 				
 				
 				
