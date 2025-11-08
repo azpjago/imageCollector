@@ -441,7 +441,16 @@ class ImageDownloaderApp:
 								# Save images
 								filename = f"{obj_type}_{category}_{downloaded_count:04d}.jpg"
 								file_path = os.path.join(folder, filename)
-								img_pil.save(file_path, "JPEG", quality=85)								
+								img_pil.save(file_path, "JPEG", quality=85)
+								
+								if os.path.getsize(file_path) > 10240:
+									downloaded_count += 1
+									self.current_progress['value'] = downloaded_count
+									self.stats_label.config(text=f"Downloaded: {downloaded_count}/{target_count}")
+									
+						except:
+							continue
+													
 				
 				
 				
