@@ -85,3 +85,11 @@ class ImageDownloaderApp:
 		# == SEARCH PARAMETER SECTION ==
 		search_frame = ttk.LabelFrame(scrollable_frame, text="Search Parameters", padding="10")
 		search_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0,10))
+
+		# Object Type
+		ttk.Label(search_frame, text="Object:").grid(row=0, column=0, sticky=tk.W, pady=3)
+		self.object_type = tk.StringVar(value="banana")
+		object_combo = ttk.Combobox(search_frame, textvariable=self.object_type,
+		values=["banana", "mango", "tomato", "apple", "orange", "custom"], state="readonly", width=12, font=('Arial',9))
+		object_combo.grid(row=0, column=1, pady=3, padx=(5,0), sticky=tk.W)
+		object_combo.bind('<<ComboboxSelected>>', self.on_object_change)
